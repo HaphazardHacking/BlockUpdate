@@ -338,7 +338,7 @@ Sub PerformHideUpdates
 End Sub
 
 Function UninstallUpdates
-	objShell.run("powershell.exe -nologo -file Uninstaller.ps1")
+	objShell.run("powershell.exe -nologo -file Uninstaller.ps1 <params>")
 End Function
 
 ' Main
