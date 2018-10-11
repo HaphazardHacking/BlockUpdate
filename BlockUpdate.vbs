@@ -2,13 +2,11 @@ Option Explicit
 
 Call ForceAdmin()
 
-' ##########################################################################################
-' #################   Force output in CMD Console instead of message box   #################
-' #################  		 and few other helpful functions ... 		   #################
-' ##########################################################################################
-
+' Force output in CMD Console instead of message box  
+' and few other helpful functions ... 		 
 ' force running script with elevated privileges (as Admin)
 ' and uses cscript.exe as interpreter (to have output in console)
+
 Function ForceAdmin
 	Dim ObjShell
 
@@ -70,9 +68,8 @@ function removeDuplicates(arraylist)
 	Set removeDuplicates = result
 end function
 
-' ##########################################################################################
-' ###################       GLOBAL VARIABLES DECLARATION       #############################
-' ##########################################################################################
+' Global Declarations
+
 
 Dim StartTime, ElapsedTime, wuResult
 
@@ -84,9 +81,7 @@ Dim updatesToHide	: Set updatesToHide	  = CreateObject( "System.Collections.Arra
 Dim blacklistedKBs  : Set blacklistedKBs  = CreateObject( "System.Collections.ArrayList" )
 
 
-' ##########################################################################################
-' ####################################     MESSAGES     ####################################
-' ##########################################################################################
+' Message
 
 Dim MSG_STARTING_PROGRAM  : MSG_STARTING_PROGRAM  = vbTab & "*****************************************************************"                 & vbNewLine &_
 													vbTab & "*" & vbTab & "  This script will search for Windows Updates and " & vbTab & "*" & vbNewLine &_
@@ -130,9 +125,7 @@ Dim MSG_CHRONO_END		  : MSG_CHRONO_END        = "Time required: "
 
 Dim MSG_SEPARATOR_LINE    : MSG_SEPARATOR_LINE    = " -------------------------------------------------------------------" & vbNewLine
 													
-' ##########################################################################################
-' #######################       FUNCTIONS DECLARATION       ################################
-' ##########################################################################################
+' Function declaration
 
 ' Uses regex matching to check for KB number at the beginning of the provided string
 Function ValidateKB(str)
@@ -260,8 +253,7 @@ Sub ParseUpdates(updatesResultObj)
 End Sub
 
 
-' formats the Windows Update Information in a intuitive way
-' and prints it in console.
+' formats the Windows Update Information and prints it in console.
 Sub PrintUpdateDetails(upd)
 	Dim uTitle, uDate, uKBid, msg
 	
@@ -345,10 +337,11 @@ Sub PerformHideUpdates
 	
 End Sub
 
+Function UninstallUpdates
+	objShell.run("powershell.exe -nologo -file Uninstaller.ps1")
+End Function
 
-' ##########################################################################################
-' ##################                       MAIN                        #####################
-' ##########################################################################################
+' Main
 
 	printf MSG_STARTING_PROGRAM
 
