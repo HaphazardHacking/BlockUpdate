@@ -2,7 +2,7 @@
 .vbs script to block specific updates 
 
 Current functionality:
-* Actively perform a check for updates
+* Actively perform a check for updates against WUA
 * Compare KB numbers against installed or pending updates
 * Hide specified KB numbers updates, preventing them from being installed
 
